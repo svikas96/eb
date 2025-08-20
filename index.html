@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Independence Day!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #00008B, #000033);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 800px;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .flag-colors {
+            display: flex;
+            height: 10px;
+            width: 100%;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .saffron { background: #FF9933; flex: 1; }
+        .white { background: #FFFFFF; flex: 1; }
+        .green { background: #138808; flex: 1; }
+        
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+            color: #FFD700;
+            position: relative;
+        }
+        
+        .fireworks {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #FFD700;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #FF4500;
+            animation: firework 2s infinite;
+        }
+        
+        @keyframes firework {
+            0% { transform: translateY(0) scale(0.5); opacity: 1; }
+            100% { transform: translateY(-100px) scale(2); opacity: 0; }
+        }
+        
+        .message {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin: 25px 0;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #FFD700;
+        }
+        
+        .patriotic-icon {
+            font-size: 4rem;
+            margin: 20px 0;
+            color: #FFD700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            animation: pulse 1.5s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .message { font-size: 1.2rem; }
+            .patriotic-icon { font-size: 3rem; }
+        }
+        
+        .quote {
+            font-style: italic;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(255, 215, 0, 0.1);
+            border-right: 5px solid #FF9933;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="flag-colors">
+            <div class="saffron"></div>
+            <div class="white"></div>
+            <div class="green"></div>
+        </div>
+        
+        <h1>HAPPY INDEPENDENCE DAY!</h1>
+        
+        <div class="patriotic-icon">★</div>
+        
+        <div class="message">
+            On this special day, let's celebrate the freedom and prosperity of our nation. 
+            May the spirit of independence fill our hearts with pride and joy!
+        </div>
+        
+        <div class="quote">
+            "Freedom is never dear at any price. It is the breath of life. What would a man not pay for living?" - Mahatma Gandhi
+        </div>
+        
+        <div class="patriotic-icon">✶</div>
+        
+        <!-- Fireworks elements will be added by JavaScript -->
+    </div>
+
+    <script>
+        // Create fireworks animation
+        function createFireworks() {
+            const container = document.querySelector('.container');
+            const fireworksCount = 30;
+            
+            for (let i = 0; i < fireworksCount; i++) {
+                const firework = document.createElement('div');
+                firework.classList.add('fireworks');
+                
+                // Random position
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 2;
+                
+                firework.style.left = `${posX}%`;
+                firework.style.top = `${posY}%`;
+                firework.style.animationDelay = `${delay}s`;
+                
+                // Random color
+                const colors = ['#FFD700', '#FF9933', '#FFFFFF', '#138808', '#FF4500'];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                firework.style.backgroundColor = randomColor;
+                firework.style.boxShadow = `0 0 20px ${randomColor}`;
+                
+                container.appendChild(firework);
+            }
+        }
+        
+        // Call the function when the page loads
+        window.onload = createFireworks;
+    </script>
+</body>
+</html>
